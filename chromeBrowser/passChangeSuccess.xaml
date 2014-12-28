@@ -1,0 +1,29 @@
+﻿<Window x:Class="chromeBrowser.passChangeSuccess"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="passChangeSuccess" WindowStyle="None"  BorderThickness="0"  AllowsTransparency="True"
+        Height="240" Width="484"  Left="400" Top="400" Icon="Images/cloud_norm-over.ico"
+	    KeyDown="Window_KeyDown" >
+    <Grid>
+        <Canvas       Height="240">
+
+            <Canvas.Background>
+                <ImageBrush ImageSource="Images/register_key/chng_bg.png">
+                </ImageBrush>
+            </Canvas.Background>
+
+
+            <Image  Width="26" Height="27" Canvas.Right="13" Canvas.Top="7"  Source="Images/login/close.png" 
+                    Name="closeBTN" Cursor="Hand" MouseLeftButtonDown="retBtn_MouseLeftButtonDown">
+            </Image>
+
+            <Image  Width="130" Height="39" Canvas.Left="177" Canvas.Top="161"  
+                    Source="Images/register_key/ch_ok.png" 
+                     Cursor="Hand" Name="retBtn" MouseLeftButtonDown="retBtn_MouseLeftButtonDown">
+            </Image>
+
+
+        </Canvas>
+
+    </Grid>
+</Window>

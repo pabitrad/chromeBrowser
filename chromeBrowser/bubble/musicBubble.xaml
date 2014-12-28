@@ -1,0 +1,45 @@
+﻿<Window x:Class="chromeBrowser.bubble.musicBubble"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Background="Transparent"       
+        BorderThickness="0"  AllowsTransparency="True" WindowStyle="None"
+        Title="musicBubble" Height="172" Width="320">
+    <Grid Background="Transparent" >
+        <Canvas Background="Transparent" Margin="0 0 0 0" Height="172" Width="320">
+            <Image Canvas.Left="0" Canvas.Top="0" Height="172" Name="bubble" Width="320" >
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="../Images/bubble/searchbubble.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="../Images/bubble/searchbubble.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <TextBox Padding="10 17 10 10" IsReadOnly="True" TextWrapping="Wrap"  Cursor="Hand" BorderThickness="0" Width="320"
+                 FontSize="14" FontWeight="Normal" Background="Transparent" Foreground="#c5c5c5" FontStretch="ExtraCondensed"
+                 Text="USB MUSIC PLAYER  -  Play music saved in your USB flash drive from the car, portable music player or on computers without waiting for the computer to bring up the music player. W protects your data and privacy on the W, but lets you play your music without the complication of logging in and out."/>
+
+            <TextBox Canvas.Left="160" Canvas.Bottom="4" Text="Don't show this again" Height="20" FontSize="14" Padding="0"
+                 IsReadOnly="True" TextWrapping="Wrap"  Cursor="Hand" Background="Transparent" BorderThickness="0" Foreground="#c14e25"/>
+
+
+
+            <Image  Height="13" Name="bubble_close" Width="13" Canvas.Right="5" Canvas.Bottom="5" MouseDown="bubble_close_MouseDown" >
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="../Images/bubble/bubble_normal_close.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="../Images/bubble/bubble_over_close.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Canvas>
+    </Grid>
+</Window>
+

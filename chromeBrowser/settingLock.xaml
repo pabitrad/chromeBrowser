@@ -1,0 +1,103 @@
+﻿<Window x:Class="chromeBrowser.settingLock"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" PreviewKeyUp="Window_PreviewKeyUp"
+        Title="settingLock" BorderThickness="0"  AllowsTransparency="True" WindowStyle="None"
+         Background="Transparent" KeyDown="Window_KeyDown" PreviewKeyDown="Window_PreviewKeyDown" >
+    <Grid  Background="Transparent">
+        <Canvas Background="Transparent" Name="top_can" Width="300" Height="350" Margin="0 0 700 0"></Canvas>
+        <Canvas Background="Transparent" Name="left_can" Width="300" Height="350" Margin="0 0 700 0"></Canvas>
+        <Border x:Name="CanvasBorder" BorderBrush="Black" BorderThickness="2"  Width="402" Height="352">
+            <Canvas Background="White"   Name="center_can">
+                <Canvas Height="47" Canvas.Top="0" Canvas.Left="0" Width="400" VerticalAlignment="Top" Background="Black">
+                    <Image Canvas.Left="14" Canvas.Top="9" Height="29" Name="lock_icon" Width="18"   >
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Images/lock/unlock_icon.jpg"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="Images/lock/unlock_icon.jpg"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+
+                    <Label  Content="SETTINGS" Foreground="#7a9d93" FontSize="16" Canvas.Left="52" Canvas.Top="10" FontStretch="ExtraExpanded" FontFamily="Tahoma"></Label>
+
+                    <Image Canvas.Left="182" Canvas.Top="8" Height="31" Name="lockicon" Width="36"   >
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Images/lock/searchMainIcon.png"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="Images/lock/searchMainIcon.png"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <Image Canvas.Right="10" Canvas.Top="7" Height="32" Name="close_icon" Width="32"
+                    MouseLeftButtonDown="close_icon_MouseLeftButtonDown" >
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Images/usb/closeUp.png"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="Images/usb/closeDown.png"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+
+                </Canvas>
+                <Canvas Margin="0 47 0 0">
+
+                    <TextBox Foreground="#a2a2a2" Canvas.Top="50" BorderThickness="1" Width="300"  Height="50" BorderBrush="Black"
+                             Canvas.Left="50"   Name="user_name" Text="User Name"
+                            KeyDown="user_name_KeyDown"  VerticalAlignment="Top" Padding="15 14 0 0" FontSize="17" 
+                             MouseEnter="user_name_MouseEnter" MouseLeave="user_name_MouseLeave"></TextBox>
+
+                    <TextBox  Foreground="#a2a2a2" Canvas.Top="116" BorderThickness="1"  Width="300"  Height="50"
+                              BorderBrush="Black" Canvas.Left="50" Text="Password" MouseEnter="user_passOver_MouseEnter"
+                              MouseLeave="user_passOver_MouseLeave"
+                              Padding="15 14 0 0" Name="user_passOver" FontSize="17" VerticalAlignment="Top"></TextBox>
+                    
+                    <PasswordBox  Foreground="#a2a2a2" Canvas.Top="116" BorderThickness="1"  Width="300"  Height="50" BorderBrush="Black" 
+                                  Canvas.Left="50"  KeyDown="user_pass_KeyDown"
+                                    Padding="15 14 0 0" Name="user_pass" Password="Password" MouseLeave="user_pass_MouseLeave"
+                                  MouseEnter="user_pass_MouseEnter" FontSize="17" VerticalAlignment="Top" Visibility="Hidden"></PasswordBox>
+
+
+                    
+                    
+
+                    <!-- <Image Canvas.Left="50" Canvas.Top="190" Height="45" Name="lock_btn" Width="300" MouseLeftButtonDown="lock_btn_MouseLeftButtonDown">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/lock/save.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/lock/save-over.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image> -->
+                    <TextBox Background="#f04e25" Foreground="White" FontSize="28" Text="Unlock" 
+                     Name="lock_btn" Canvas.Left="50" Canvas.Top="190" Height="45" 
+                     Width="300"
+                     MouseLeftButtonDown="lock_btn_MouseLeftButtonDown"
+                     Padding="103 3 0 0"  IsReadOnly="True"
+                     MouseEnter="TextBox_MouseEnter_1" MouseLeave="TextBox_MouseLeave_1"  BorderThickness="0"                       
+                     Cursor="Arrow"></TextBox>
+
+
+                </Canvas>
+
+            </Canvas>
+        </Border>
+        <Canvas Background="Transparent" Name="right_can" Width="300" Height="350" Margin="700 0 0 0"></Canvas>
+        <Canvas Background="Transparent" Name="bottom_can" Width="300" Height="350" Margin="0 0 700 0"></Canvas>
+    </Grid>
+</Window>

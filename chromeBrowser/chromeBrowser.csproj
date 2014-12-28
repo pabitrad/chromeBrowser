@@ -1,0 +1,1100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3B65B7F0-63CB-426B-896B-6EB93A051A82}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>chromeBrowser</RootNamespace>
+    <AssemblyName>S</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cloud_norm-over.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>chromeBrowser.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenVpnLib">
+      <HintPath>..\..\..\VPN\OpenVpnLib.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLite.Designer, Version=1.0.89.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SQLite.Designer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.89.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.89.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="utils\AnimatedGIFControl.cs" />
+    <Compile Include="utils\AnimatedTrackControl.cs" />
+    <Compile Include="utils\AnimatedVPNControl.cs" />
+    <Compile Include="anti_window.xaml.cs">
+      <DependentUpon>anti_window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\cameraBubble.xaml.cs">
+      <DependentUpon>cameraBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\closeBubble.xaml.cs">
+      <DependentUpon>closeBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\cloudIconBubble.xaml.cs">
+      <DependentUpon>cloudIconBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\clrBubble.xaml.cs">
+      <DependentUpon>clrBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\contactInfoBubble.xaml.cs">
+      <DependentUpon>contactInfoBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\googleIconBubble.xaml.cs">
+      <DependentUpon>googleIconBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\lockBubble.xaml.cs">
+      <DependentUpon>lockBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\logoBubble.xaml.cs">
+      <DependentUpon>logoBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\musciBubble.xaml.cs">
+      <DependentUpon>musciBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\musicBubble.xaml.cs">
+      <DependentUpon>musicBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\regBubble.xaml.cs">
+      <DependentUpon>regBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\settingBubble.xaml.cs">
+      <DependentUpon>settingBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\temBubble.xaml.cs">
+      <DependentUpon>temBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\urlBubble.xaml.cs">
+      <DependentUpon>urlBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\usbBubble.xaml.cs">
+      <DependentUpon>usbBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\userNameBubble.xaml.cs">
+      <DependentUpon>userNameBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="utils\CheckNotifyIcon.cs" />
+    <Compile Include="utils\checkPing.cs" />
+    <Compile Include="clrSetting.xaml.cs">
+      <DependentUpon>clrSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="utils\MainVirtualKeyboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utils\MainVirtualKeyboard.designer.cs">
+      <DependentUpon>MainVirtualKeyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="utils\customCanvas.cs" />
+    <Compile Include="utils\FileCopy.cs" />
+    <Compile Include="fileLoadProgress.xaml.cs">
+      <DependentUpon>fileLoadProgress.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="utils\fileItem.cs" />
+    <Compile Include="firefoxLoading.xaml.cs">
+      <DependentUpon>firefoxLoading.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="forgotPass.xaml.cs">
+      <DependentUpon>forgotPass.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="utils\GifImage.cs" />
+    <Compile Include="hackAlertSetting.xaml.cs">
+      <DependentUpon>hackAlertSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="utils\IconHelper.cs" />
+    <Compile Include="utils\Keyboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utils\Keyboard.designer.cs">
+      <DependentUpon>Keyboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="licenseWin.xaml.cs">
+      <DependentUpon>licenseWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="loadingInternet.xaml.cs">
+      <DependentUpon>loadingInternet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="lockResult.xaml.cs">
+      <DependentUpon>lockResult.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LockWindow.xaml.cs">
+      <DependentUpon>LockWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="logFailedWin.xaml.cs">
+      <DependentUpon>logFailedWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginSuccess.xaml.cs">
+      <DependentUpon>LoginSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="utils\miniCapture.cs" />
+    <Compile Include="noInternet.xaml.cs">
+      <DependentUpon>noInternet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="passChangeSuccess.xaml.cs">
+      <DependentUpon>passChangeSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="utils\PercentageConverter.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="regist.xaml.cs">
+      <DependentUpon>regist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="registerKey.xaml.cs">
+      <DependentUpon>registerKey.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="resetPass.xaml.cs">
+      <DependentUpon>resetPass.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="bubble\searchBubble.xaml.cs">
+      <DependentUpon>searchBubble.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="searchSetting.xaml.cs">
+      <DependentUpon>searchSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="settingLock.xaml.cs">
+      <DependentUpon>settingLock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="utils\sliderUtil.cs" />
+    <Compile Include="utils\SoundInfo.cs" />
+    <Compile Include="toolbar.xaml.cs">
+      <DependentUpon>toolbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="utils\URL.cs" />
+    <Compile Include="utils\usbCheck.cs" />
+    <Compile Include="UsbPopUp.xaml.cs">
+      <DependentUpon>UsbPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="utils\USBSN.cs" />
+    <Compile Include="utils\UsbUtils.cs" />
+    <Compile Include="usb\deleteMenu.xaml.cs">
+      <DependentUpon>deleteMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="vpnWin.xaml.cs">
+      <DependentUpon>vpnWin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WebcamPlayer\CapDevice.cs" />
+    <Compile Include="WebcamPlayer\CapGrabber.cs" />
+    <Compile Include="WebcamPlayer\CapHelper.cs" />
+    <Compile Include="WebcamPlayer\CapInterfaces.cs" />
+    <Compile Include="WebcamPlayer\CapPlayer.cs" />
+    <Compile Include="WebcamPlayer\CapStructures.cs" />
+    <Compile Include="WebcamPlayer\FilterInfo.cs" />
+    <Page Include="anti_window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\cameraBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\closeBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\cloudIconBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\clrBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\contactInfoBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\googleIconBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\lockBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\logoBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\musciBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\musicBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\regBubble.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="bubble\settingBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\temBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\urlBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\usbBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\userNameBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="clrSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="fileLoadProgress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="firefoxLoading.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="forgotPass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="hackAlertSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="licenseWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="loadingInternet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="lockResult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LockWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="logFailedWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginSuccess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="login.xaml.cs">
+      <DependentUpon>login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="noInternet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="passChangeSuccess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="regist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="registerKey.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="resetPass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="bubble\searchBubble.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="searchSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="settingLock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SettingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="toolbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UsbPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usb\deleteMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vpnWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="utils\MainVirtualKeyboard.resx">
+      <DependentUpon>MainVirtualKeyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utils\Keyboard.resx">
+      <DependentUpon>Keyboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\app-icon.ico" />
+    <Resource Include="Images\app-icon.png" />
+    <Resource Include="Images\cloud_norm-over.ico" />
+    <Resource Include="Images\cloud_norm-over.png" />
+    <Resource Include="Images\cloud_norm.png" />
+    <Resource Include="Images\cnn_icon-over.png" />
+    <Resource Include="Images\cnn_icon.png" />
+    <Resource Include="Images\file\default.png" />
+    <Resource Include="Images\file\edit.png" />
+    <Resource Include="Images\file\ExcelIcon.gif" />
+    <Resource Include="Images\file\excelicon.png" />
+    <Resource Include="Images\file\imagetype.gif" />
+    <Resource Include="Images\file\music.png" />
+    <Resource Include="Images\file\pdf.gif" />
+    <Resource Include="Images\file\pdf.jpg" />
+    <Resource Include="Images\file\video.gif" />
+    <Resource Include="Images\file\word.png" />
+    <Resource Include="Images\iconSetting\aol_icn-over-op.png" />
+    <Resource Include="Images\iconSetting\blogger-over-op.png" />
+    <Resource Include="Images\iconSetting\cnn_icon-over-op.png" />
+    <Resource Include="Images\iconSetting\fb_icn-over-op.png" />
+    <Resource Include="Images\iconSetting\inn-over-op.png" />
+    <Resource Include="Images\iconSetting\instagrame_icn-over-op.png" />
+    <Resource Include="Images\iconSetting\msn_icn-over-op.png" />
+    <Resource Include="Images\iconSetting\right_icon4-over-op.png" />
+    <Resource Include="Images\iconSetting\right_icon5-over-op.png" />
+    <Resource Include="Images\iconSetting\right_icon6-over-op.png" />
+    <Resource Include="Images\iconSetting\right_icon7-over-op.png" />
+    <Resource Include="Images\iconSetting\right_icon8-over-op.png" />
+    <Resource Include="Images\iconSetting\rss-over-op.png" />
+    <Resource Include="Images\iconSetting\twit_icn-over-op.png" />
+    <Resource Include="Images\iconSetting\wikipedia_icon-over-op.png" />
+    <Resource Include="Images\iconSetting\youtube_icon-over-op.png" />
+    <Resource Include="Images\Icon\espn-gray.png" />
+    <Resource Include="Images\Icon\espn-over.png" />
+    <Resource Include="Images\Icon\espn.png" />
+    <Resource Include="Images\Icon\foxNews-gray.png" />
+    <Resource Include="Images\Icon\foxNews-over.png" />
+    <Resource Include="Images\Icon\foxNews.png" />
+    <Resource Include="Images\Icon\imdb-gray.png" />
+    <Resource Include="Images\Icon\imdb-over.png" />
+    <Resource Include="Images\Icon\imdb.png" />
+    <Resource Include="Images\Icon\Netflix-gray.png" />
+    <Resource Include="Images\Icon\Netflix-over.png" />
+    <Resource Include="Images\Icon\Netflix.png" />
+    <Resource Include="Images\Icon\pandoraMusic-gray.png" />
+    <Resource Include="Images\Icon\pandoraMusic-over.png" />
+    <Resource Include="Images\Icon\pandoraMusic.png" />
+    <Resource Include="Images\Icon\paypal-gray.png" />
+    <Resource Include="Images\Icon\paypal-over.png" />
+    <Resource Include="Images\Icon\paypal.png" />
+    <Resource Include="Images\Icon\printrest-gray.png" />
+    <Resource Include="Images\Icon\printrest-over.png" />
+    <Resource Include="Images\Icon\printrest.png" />
+    <Resource Include="Images\Icon\qq-gray.png" />
+    <Resource Include="Images\Icon\qq-over.png" />
+    <Resource Include="Images\Icon\qq.png" />
+    <Resource Include="Images\Icon\wordpress-gray.png" />
+    <Resource Include="Images\Icon\wordpress-over.png" />
+    <Resource Include="Images\Icon\wordpress.png" />
+    <Resource Include="Images\Icon\yelp-gray.png" />
+    <Resource Include="Images\Icon\yelp-over.png" />
+    <Resource Include="Images\Icon\yelp.png" />
+    <Resource Include="Images\lock\closeButton.png" />
+    <Resource Include="Images\lock\closeOverButton.png" />
+    <Resource Include="Images\lock\miniButton.png" />
+    <Resource Include="Images\lock\miniOver.png" />
+    <Resource Include="Images\lock\save-over.png" />
+    <Resource Include="Images\lock\save.png" />
+    <Resource Include="Images\lock\searchMainIcon.png" />
+    <Resource Include="Images\lock\unlock-over_icon.jpg" />
+    <Resource Include="Images\lock\unlock_icon.jpg" />
+    <Resource Include="Images\loginWin\loginsuccess.png" />
+    <Resource Include="Images\log\cent_logo.png" />
+    <Resource Include="Images\log\logo.png" />
+    <Resource Include="Images\search\aol-over.png" />
+    <Resource Include="Images\search\aol.png" />
+    <Resource Include="Images\search\aolIcon.png" />
+    <Resource Include="Images\search\baidu-over.png" />
+    <Resource Include="Images\search\baidu.png" />
+    <Resource Include="Images\search\baiduIcon.png" />
+    <Resource Include="Images\search\bing-over.png" />
+    <Resource Include="Images\search\bing.png" />
+    <Resource Include="Images\search\bingIcon.png" />
+    <Resource Include="Images\search\closeButton.png" />
+    <Resource Include="Images\search\closeOverButton.png" />
+    <Resource Include="Images\search\close_icon.png" />
+    <Resource Include="Images\search\google-over.png" />
+    <Resource Include="Images\search\google.png" />
+    <Resource Include="Images\search\googleIcon.png" />
+    <Resource Include="Images\search\hack.png" />
+    <Resource Include="Images\search\miniButton.png" />
+    <Resource Include="Images\search\miniOver.png" />
+    <Resource Include="Images\search\mini_icon.png" />
+    <Resource Include="Images\search\naver-over.png" />
+    <Resource Include="Images\search\naver.png" />
+    <Resource Include="Images\search\save-over.png" />
+    <Resource Include="Images\search\save.png" />
+    <Resource Include="Images\search\searchEnterIcon.png" />
+    <Resource Include="Images\search\searchEnterOverIcon.png" />
+    <Resource Include="Images\search\searchHom.png" />
+    <Resource Include="Images\search\searchHomOver.png" />
+    <Resource Include="Images\search\searchIcon.png" />
+    <Resource Include="Images\search\searchMainIcon.png" />
+    <Resource Include="Images\search\yahoo-over.png" />
+    <Resource Include="Images\search\yahoo.png" />
+    <Resource Include="Images\search\yahooIcon.png" />
+    <Resource Include="Images\search\yandex-over.png" />
+    <Resource Include="Images\search\yandex.png" />
+    <Resource Include="Images\search\yandexIcon.png" />
+    <Resource Include="Images\tab\big_close-over.png" />
+    <Resource Include="Images\tab\big_close.png" />
+    <Resource Include="Images\tab\big_close1.png" />
+    <Resource Include="Images\tab\close_over-over.png" />
+    <Resource Include="Images\tab\small_close-over.png" />
+    <Resource Include="Images\tab\small_close.png" />
+    <Resource Include="Images\tab\small_x_close.png" />
+    <Resource Include="Images\usb\addUSBDOWN.png" />
+    <Resource Include="Images\usb\addUSBUP.png" />
+    <Resource Include="Images\usb\bin.png" />
+    <Resource Include="Images\usb\binDown.png" />
+    <Resource Include="Images\usb\binThm.png" />
+    <Resource Include="Images\usb\clndr_thmb.png" />
+    <Resource Include="Images\usb\closeDown.png" />
+    <Resource Include="Images\usb\closeUp.png" />
+    <Resource Include="Images\usb\contacts_thmb.png" />
+    <Resource Include="Images\usb\docs_thmb.png" />
+    <Resource Include="Images\usb\docs_thmbDown.png" />
+    <Resource Include="Images\usb\docThmb-over.png" />
+    <Resource Include="Images\usb\docThmb.png" />
+    <Resource Include="Images\usb\minimizeDown.png" />
+    <Resource Include="Images\usb\minimizeUp.png" />
+    <Resource Include="Images\usb\miscThumb-over.png" />
+    <Resource Include="Images\usb\miscThumb.png" />
+    <Resource Include="Images\usb\misc_thmb.png" />
+    <Resource Include="Images\usb\misc_thmbDown.png" />
+    <Resource Include="Images\usb\movies_thmb.png" />
+    <Resource Include="Images\usb\movies_thmbDown.png" />
+    <Resource Include="Images\usb\moviThumb-over.png" />
+    <Resource Include="Images\usb\moviThumb.png" />
+    <Resource Include="Images\usb\musicThumb-over.png" />
+    <Resource Include="Images\usb\musicThumb.png" />
+    <Resource Include="Images\usb\music_thmb.png" />
+    <Resource Include="Images\usb\music_thmbDown.png" />
+    <Resource Include="Images\usb\pics_thmb.png" />
+    <Resource Include="Images\usb\pics_thmbDown.png" />
+    <Resource Include="Images\usb\picThumb-over.png" />
+    <Resource Include="Images\usb\picThumb.png" />
+    <Resource Include="Images\usb\proCanvas.png" />
+    <Resource Include="Images\usb\proCanvas_over.png" />
+    <Resource Include="Images\usb\prog.png" />
+    <Resource Include="Images\usb\progUp.png" />
+    <Resource Include="Images\usb\scroll-over.png" />
+    <Resource Include="Images\usb\scroll.png" />
+    <Resource Include="Images\usb\UsbIcon.png" />
+    <Resource Include="Images\usb\usbSetting.png" />
+    <Resource Include="Images\usb\usb_back.png" />
+    <Resource Include="Images\usb\usb_back2.png" />
+    <Resource Include="Images\usb\usb_small-over.png" />
+    <Resource Include="Images\usb\x-black.png" />
+    <Resource Include="Images\usb\x-white.png" />
+    <Resource Include="Images\userprofile\amazon-over.png" />
+    <Resource Include="Images\userprofile\amazon.png" />
+    <Resource Include="Images\userprofile\aol-gray.png" />
+    <Resource Include="Images\userprofile\aol-over.png" />
+    <Resource Include="Images\userprofile\aol.png" />
+    <Resource Include="Images\userprofile\bing-over.png" />
+    <Resource Include="Images\userprofile\bing.png" />
+    <Resource Include="Images\userprofile\closeButton.png" />
+    <Resource Include="Images\userprofile\closeOverButton.png" />
+    <Resource Include="Images\userprofile\cnn-over.png" />
+    <Resource Include="Images\userprofile\cnn.png" />
+    <Resource Include="Images\userprofile\craigi-over.png" />
+    <Resource Include="Images\userprofile\craigi.png" />
+    <Resource Include="Images\userprofile\ebey-over.png" />
+    <Resource Include="Images\userprofile\ebey.png" />
+    <Resource Include="Images\userprofile\facebook-over.png" />
+    <Resource Include="Images\userprofile\facebook.png" />
+    <Resource Include="Images\userprofile\fr-over.png" />
+    <Resource Include="Images\userprofile\fr.png" />
+    <Resource Include="Images\userprofile\general-click.png" />
+    <Resource Include="Images\userprofile\general-over.png" />
+    <Resource Include="Images\userprofile\general.png" />
+    <Resource Include="Images\userprofile\gmail-gray.png" />
+    <Resource Include="Images\userprofile\gmail-over.png" />
+    <Resource Include="Images\userprofile\gmail.png" />
+    <Resource Include="Images\userprofile\hack-over.png" />
+    <Resource Include="Images\userprofile\hack.png" />
+    <Resource Include="Images\userprofile\help.png" />
+    <Resource Include="Images\userprofile\helpOver.png" />
+    <Resource Include="Images\userprofile\hotmail-gray.png" />
+    <Resource Include="Images\userprofile\hotmail-over.png" />
+    <Resource Include="Images\userprofile\hotmail.png" />
+    <Resource Include="Images\userprofile\insta-over.png" />
+    <Resource Include="Images\userprofile\insta.png" />
+    <Resource Include="Images\userprofile\line.png" />
+    <Resource Include="Images\userprofile\linked-over.png" />
+    <Resource Include="Images\userprofile\linked.png" />
+    <Resource Include="Images\userprofile\map-over.png" />
+    <Resource Include="Images\userprofile\map.png" />
+    <Resource Include="Images\userprofile\miniButton.png" />
+    <Resource Include="Images\userprofile\miniOver.png" />
+    <Resource Include="Images\userprofile\network-over.png" />
+    <Resource Include="Images\userprofile\network.png" />
+    <Resource Include="Images\userprofile\rss-over.png" />
+    <Resource Include="Images\userprofile\rss.png" />
+    <Resource Include="Images\userprofile\select.png" />
+    <Resource Include="Images\userprofile\setting.png" />
+    <Resource Include="Images\userprofile\settingIcon.png" />
+    <Resource Include="Images\userprofile\setting_over.png" />
+    <Resource Include="Images\userprofile\space.png" />
+    <Resource Include="Images\userprofile\thumb-over.png" />
+    <Resource Include="Images\userprofile\thumb.png" />
+    <Resource Include="Images\userprofile\twitter-over.png" />
+    <Resource Include="Images\userprofile\twitter.png" />
+    <Resource Include="Images\userprofile\upload-over.png" />
+    <Resource Include="Images\userprofile\upload-over1.png" />
+    <Resource Include="Images\userprofile\upload.png" />
+    <Resource Include="Images\userprofile\upload1.png" />
+    <Resource Include="Images\userprofile\wiki-over.png" />
+    <Resource Include="Images\userprofile\wiki.png" />
+    <Resource Include="Images\userprofile\yao-gray.png" />
+    <Resource Include="Images\userprofile\yao-over.png" />
+    <Resource Include="Images\userprofile\yao.png" />
+    <Resource Include="Images\userprofile\youtub-over.png" />
+    <Resource Include="Images\userprofile\yutube.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cloud_norm-over.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\chrome\chrome_close-over.png" />
+    <Resource Include="Images\chrome\chrome_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\chrome\chrome_setting-over.png" />
+    <Resource Include="Images\chrome\chrome_setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\chrome\chrome_lock-over.png" />
+    <Resource Include="Images\chrome\chrome_lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\chrome\chrome_usb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\chrome\usb-over.png" />
+    <Resource Include="Images\chrome\usb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\chrome\chromeButton-over.png" />
+    <Resource Include="Images\chrome\chromeButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\chrome\usb1-over.png" />
+    <Resource Include="Images\chrome\usb1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\chrome\chrome-over.png" />
+    <Resource Include="Images\chrome\chrome.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\camera\camera_disable.png" />
+    <Resource Include="Images\camera\camera_enable.png" />
+    <Resource Include="Images\camera\camera_over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lock\lock-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\userprofile\hackOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\searchbubble.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\bubble_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fileLoad\arrow.png" />
+    <Resource Include="Images\fileLoad\loading_end.png" />
+    <Resource Include="Images\fileLoad\loading_start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\bubble_normal_close.png" />
+    <Resource Include="Images\bubble\bubble_over_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\textbubble.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\usbBubble.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\textRightbubble.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\usb\usb_bck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cloud\cloud.png" />
+    <Resource Include="Images\cloud\wlogoForWdrive.png" />
+    <Resource Include="Images\cloud\wlogoForWdriveNormal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pass\passBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pass\internet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WebcamPlayer\Resources\loadImage.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\login\contact.png" />
+    <Resource Include="Images\login\contact_info.png" />
+    <Resource Include="Images\login\login_btn.png" />
+    <Resource Include="Images\login\login_over_btn.png" />
+    <Resource Include="Images\login\logo.png" />
+    <Resource Include="Images\login\reg_btn.png" />
+    <Resource Include="Images\login\resetPass_btn.png" />
+    <Resource Include="Images\login\wemagin_tech.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\login\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\reg_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\reg_key_bg.png" />
+    <Resource Include="Images\register_key\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\login\lg_fail_bg.png" />
+    <Resource Include="Images\login\lg_fail_submit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\reset_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\login\bellow_foot.png" />
+    <Resource Include="Images\login\up_foot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\bg_part.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\usb-over.png" />
+    <Resource Include="Images\toolbar\usb.png" />
+    <Resource Include="Images\toolbar\visible_text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\close-over.png" />
+    <Resource Include="Images\toolbar\close.png" />
+    <Resource Include="Images\toolbar\line.png" />
+    <Resource Include="Images\toolbar\logo-over.png" />
+    <Resource Include="Images\toolbar\logo.png" />
+    <Resource Include="Images\toolbar\setting-over.png" />
+    <Resource Include="Images\toolbar\setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\logo_over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\search\logo.png" />
+    <Resource Include="Images\search\search_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\search\lock_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\search\lock_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\setting\alert.png" />
+    <Resource Include="Images\setting\cloud.png" />
+    <Resource Include="Images\setting\lock.png" />
+    <Resource Include="Images\setting\pallet.png" />
+    <Resource Include="Images\setting\person.png" />
+    <Resource Include="Images\setting\set_bg.png" />
+    <Resource Include="Images\setting\video.png" />
+    <Resource Include="Images\setting\vpn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\setting\lock_over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\invisible_text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\setting\alert-over.png" />
+    <Resource Include="Images\setting\cloud_gray.png" />
+    <Resource Include="Images\setting\person-over.png" />
+    <Resource Include="Images\setting\video-over.png" />
+    <Resource Include="Images\setting\vpn-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\google.png" />
+    <Resource Include="Images\toolbar\search_icn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\google_s.png" />
+    <Resource Include="Images\toolbar\line_s.png" />
+    <Resource Include="Images\toolbar\search_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\fnd_s.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\line_se.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\fnd_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\fnd_w.png" />
+    <Resource Include="Images\toolbar\google_w.png" />
+    <Resource Include="Images\toolbar\search_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\contact_info\contact_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\contact_info\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\contact_info\text_normal.png" />
+    <Resource Include="Images\contact_info\text_over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\cam_block.png" />
+    <Resource Include="Images\toolbar\main_cam-over.png" />
+    <Resource Include="Images\toolbar\main_cam.png" />
+    <Resource Include="Images\toolbar\min-over.png" />
+    <Resource Include="Images\toolbar\min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\setting\vpn-down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\setting\black_color_pallet.png" />
+    <Resource Include="Images\setting\blue_color_pallet.png" />
+    <Resource Include="Images\setting\pink_color_pallet.png" />
+    <Resource Include="Images\setting\red_color_pallet.png" />
+    <Resource Include="Images\setting\white_color_pallet.png" />
+    <Resource Include="Images\setting\yellow_color_pallet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\setting\clr_set_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\setting\blue-over.png" />
+    <Resource Include="Images\setting\gray-over.png" />
+    <Resource Include="Images\setting\pink-over.png" />
+    <Resource Include="Images\setting\red-over.png" />
+    <Resource Include="Images\setting\white-over.png" />
+    <Resource Include="Images\setting\yellow-over.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\setting\white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\login\forgot_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\login\forgot_sub.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\setting\hack_bg.png" />
+    <Resource Include="Images\setting\turner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\agree_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\agree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\noBtn.png" />
+    <Resource Include="Images\register_key\yesBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\back_log.png" />
+    <Resource Include="Images\register_key\internet_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\login\virus_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\login\websitLink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\login\virus_link.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\baidu_s.png" />
+    <Resource Include="Images\toolbar\baidu_w.png" />
+    <Resource Include="Images\toolbar\bing_s.png" />
+    <Resource Include="Images\toolbar\bing_w.png" />
+    <Resource Include="Images\toolbar\rambler_s.png" />
+    <Resource Include="Images\toolbar\rambler_w.png" />
+    <Resource Include="Images\toolbar\yahoo_s.png" />
+    <Resource Include="Images\toolbar\yahoo_w.png" />
+    <Resource Include="Images\toolbar\yandex_s.png" />
+    <Resource Include="Images\toolbar\yandex_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\login\log_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WebcamPlayer\Resources\establishin_popups.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\loadImage.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\naver_s.png" />
+    <Resource Include="Images\toolbar\naver_w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\toolbar\vpn_block.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\chng_bg.png" />
+    <Resource Include="Images\register_key\ch_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\reg_success_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\spy_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\tutorial_cls.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\view_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\url_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\search_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\click_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\spyCam_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\temp_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\wcloud_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\bubble\vpn_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\vpn\vpn_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\vpn\menu\connection.png" />
+    <Resource Include="Images\vpn\menu\file.png" />
+    <Resource Include="Images\vpn\menu\preper.png" />
+    <Resource Include="Images\vpn\menu\support.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\vpn\menu\connected.png" />
+    <Resource Include="Images\vpn\menu\connecting.png" />
+    <Resource Include="Images\vpn\menu\disconnect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\vpn\menu\conBtn.png" />
+    <Resource Include="Images\vpn\menu\conHoverBTN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\vpn\menu\disconBTN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\vpn\table\city.png" />
+    <Resource Include="Images\vpn\table\country.png" />
+    <Resource Include="Images\vpn\table\responstime.png" />
+    <Resource Include="Images\vpn\table\server.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\vpn\menu\ip_header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\accept.png" />
+    <Resource Include="Images\register_key\custom_check.png" />
+    <Resource Include="Images\register_key\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\register_key\sample.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\vpn\menu\protocol.png" />
+    <Resource Include="Images\vpn\menu\tcp.png" />
+    <Resource Include="Images\vpn\menu\tcp_on.png" />
+    <Resource Include="Images\vpn\menu\udp.png" />
+    <Resource Include="Images\vpn\menu\upd_on.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="establish_popups.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\vpn\menu\connecting_txt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refr.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Keyboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="tutorial\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

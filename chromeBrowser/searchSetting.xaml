@@ -1,0 +1,172 @@
+﻿<Window x:Class="chromeBrowser.searchSetting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        BorderThickness="0" BorderBrush="Black"  AllowsTransparency="True"
+        WindowStyle="None" Title="searchSetting" Height="246" Width="484" 
+        MouseLeave="Window_MouseLeave" Background="Transparent" >
+    <Grid>
+
+        <Canvas MouseLeave="Window_MouseLeave" MouseMove="Canvas_MouseMove_1"  Margin="0,0,0,0">
+
+            <Canvas.Background>
+                <ImageBrush ImageSource="Images/search/search_bg.png">
+                </ImageBrush>
+            </Canvas.Background>            
+            
+            <Image  Width="26" Height="27" Canvas.Right="13" Canvas.Top="13"  Source="Images/login/close.png" 
+                   MouseLeftButtonDown="close_button_MouseLeftButtonDown" Cursor="Hand"  >                
+            </Image>
+            <Image Canvas.Left="46" Canvas.Top="68" Height="45" Name="google" Width="45" 
+                   MouseLeftButtonDown="google_MouseLeftButtonDown" Cursor="Arrow"
+                   MouseEnter="google_MouseEnter" MouseLeave="google_MouseLeave">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/search/google.png" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/search/google-over.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Image Canvas.Left="103" Canvas.Top="68" Height="45" Name="yahoo" Width="45" MouseLeftButtonDown="yahoo_MouseLeftButtonDown"
+                   MouseEnter="yahoo_MouseEnter" MouseLeave="yahoo_MouseLeave" Cursor="Hand">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/search/yahoo.png" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/search/yahoo-over.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            <Label Content="Yahoo"  FontSize="9" Foreground="#843d91"  Width="38" Name="yahoo_label"  Visibility="Hidden"
+                   Canvas.Left="105"  Canvas.Top="48" Height="22"></Label>
+
+            <Image Canvas.Left="160" Canvas.Top="68" Height="45" Name="bing" Width="45"  MouseLeftButtonDown="bing_MouseLeftButtonDown"
+                   MouseEnter="bing_MouseEnter" MouseLeave="bing_MouseLeave" Cursor="Hand">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/search/bing.png" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/search/bing-over.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            <Label Content="Bing"  FontSize="9" Foreground="#345db1"  Width="40" Name="bing_label"  Visibility="Hidden"
+                   Canvas.Left="166"  Canvas.Top="48" Height="22"></Label>
+
+            <Image Canvas.Left="217" Canvas.Top="68" Height="45" Name="aol" Width="45" MouseLeftButtonDown="aol_MouseLeftButtonDown"
+                   MouseEnter="aol_MouseEnter" MouseLeave="aol_MouseLeave" Cursor="Hand">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/search/aol.png" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/search/aol-over.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            <Label Content="Aol"  FontSize="9" Foreground="#15b2db"  Width="31" Name="aol_label"  Visibility="Hidden"
+                   Canvas.Left="228"  Canvas.Top="48" Height="22"></Label>
+
+            <Image Canvas.Left="274" Canvas.Top="68" Height="45" Name="baidu" Width="45"  MouseLeftButtonDown="baidu_MouseLeftButtonDown"
+                   MouseEnter="baidu_MouseEnter" MouseLeave="baidu_MouseLeave" Cursor="Hand">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/search/baidu.png" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/search/baidu-over.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image> 
+
+            <Label Content="Baidu"  FontSize="9" Foreground="#304aa0"  Width="35" Name="baidu_label"  Visibility="Hidden"
+                   Canvas.Left="281"  Canvas.Top="48" Height="22"></Label>
+
+            <Label Content="Yandex"  FontSize="9" Foreground="#cd2126"  Width="50" Name="yandex_label"  Visibility="Hidden"
+                   Canvas.Left="334"  Canvas.Top="48"></Label>
+            <Image Canvas.Left="331" Canvas.Top="68" Height="45" Name="yandex" Width="45" MouseLeftButtonDown="yandex_MouseLeftButtonDown" 
+                   MouseEnter="yandex_MouseEnter" MouseLeave="yandex_MouseLeave"  Cursor="Hand">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/search/yandex.png" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/search/yandex-over.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Label Content="Google"  FontSize="9" Foreground="#26498b"  Width="40" Name="google_label"  Visibility="Hidden"
+                   Canvas.Left="50"  Canvas.Top="48" Height="22"></Label>
+
+            <Image Canvas.Left="388" Canvas.Top="68" Height="45" Name="naver" Width="45" MouseLeftButtonDown="naver_MouseLeftButtonDown" 
+                   MouseEnter="naver_MouseEnter" MouseLeave="naver_MouseLeave" Cursor="Hand">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/search/naver.png" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/search/naver-over.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Label Content="Naver"  FontSize="9" Foreground="Black"  Width="40" Name="naver_label"  Visibility="Hidden"
+                   Canvas.Left="393"  Canvas.Top="48" Height="22"></Label>
+            
+            <TextBox Background="Transparent" Foreground="Gray" FontSize="15" Canvas.Left="45" MouseEnter="engin_txt_MouseEnter"
+                     Canvas.Top="140" Height="38" Name="engin_txt" Width="392" Text="google.com" KeyDown="engin_txt_KeyDown"
+                     Padding="15 8 0 0"    BorderThickness="0" MouseLeftButtonDown="engin_txt_MouseLeftButtonDown"  Cursor="Hand"  ></TextBox>
+
+            <Image Canvas.Left="400" Canvas.Top="139" Height="38" Name="searchIcon" Width="38" 
+                   MouseLeftButtonDown="searchIcon_MouseLeftButtonDown"  Cursor="Hand">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/search/searchEnterIcon.png" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/search/searchEnterOverIcon.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+
+            <Image Canvas.Left="179" Canvas.Top="192" Height="39" Name="save"  Cursor="Hand" Width="130" 
+                   MouseLeftButtonDown="searchIcon_MouseLeftButtonDown" >
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/search/save.png" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/search/save.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            
+            
+        </Canvas>
+    </Grid>
+</Window>
+

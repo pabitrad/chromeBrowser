@@ -1,0 +1,332 @@
+﻿<Window x:Class="chromeBrowser.UsbPopUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        BorderThickness="0" BorderBrush="Black"  AllowsTransparency="True"
+        Title="UsbPopUp" Height="600" Width="800" WindowStyle="None" MouseLeave="Canvas_MouseLeave" Background="Transparent" >
+
+
+    <Window.Resources>
+
+        <Style x:Key="ActionLabelStyle" TargetType="{x:Type Label}">
+            <Setter Property="Margin" Value="0,0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="True" />
+                        <Condition Property="IsEnabled" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background" Value="Transparent" />
+                </MultiTrigger>
+            </Style.Triggers>
+            <Style.Resources>
+                <Style TargetType="TextBlock">
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Label}, Path=IsMouseOver}" Value="True" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="TextDecorations" Value="Underline"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="outerBorder" CornerRadius="4" BorderThickness="1" BorderBrush="#FFF04E25" Background="#FFF04E25" >
+                            <!--  <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ColorAnimation Duration="0" To="#FFF04E25"
+                                                Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
+                                                Storyboard.TargetName="contentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState> 
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups> -->
+                            <Grid>
+                                <Border x:Name="Background" CornerRadius="3" BorderThickness="1" BorderBrush="Transparent">
+                                    <Grid>
+                                        <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
+
+    <Grid  >
+
+        <Border x:Name="CanvasBorder" BorderBrush="Black" BorderThickness="1"     Height="600" Width="800" >
+            <Canvas Margin="0,0,0,0"  MouseLeftButtonUp="Canvas_MouseLeftButtonUp" MouseLeave="Canvas_MouseLeave"
+                    MouseMove="Canvas_MouseMove">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="Images/usb/usb_bck.png">
+                    </ImageBrush>
+                </Canvas.Background>
+                <!--<Label Content="www.wemagin.com" Canvas.Left="1" Canvas.Top="170" FontSize="11" FontWeight="Bold" Foreground="#f04e25"></Label> -->
+
+                <Image Canvas.Left="0" Canvas.Bottom="0" Height="40" Name="UsbIcon" Width="40" >
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/usb/usb_small-over.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/usb/UsbIcon.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+
+
+                <Image Canvas.Left="0" Canvas.Top="30" Height="40" Name="addUsb" Width="40" MouseLeftButtonDown="addUsb_MouseLeftButtonDown" >
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/usb/addUSBUP.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/usb/addUSBDOWN.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Image Canvas.Right="0" Canvas.Top="0" Height="31" Name="usbClose" Width="31"  
+                       MouseEnter="usbClose_MouseEnter" MouseLeave="usbClose_MouseLeave" 
+                       MouseLeftButtonDown="webForward_MouseLeftButtonDown" >
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/usb/closeUp.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/usb/closeDown.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+
+
+                <Image Canvas.Left="40" Canvas.Top="20" Height="50" Name="doc_top" Width="145" MouseEnter="doc_top_MouseEnter"
+                   MouseLeave="doc_top_MouseLeave" >
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/usb/docThmb.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/usb/docThmb-over.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Label Background="Transparent" Foreground="White" FontSize="9" FontWeight="Light" FontFamily="Arial"
+                       Content="D  O  C  U  M  E  N  T" Canvas.Left="63" Canvas.Top="20" Visibility="Hidden" Name="doc_title"
+                       MouseEnter="doc_title_MouseEnter"  />
+               
+                
+                <Image Canvas.Left="185" Canvas.Top="20" Height="50" Name="pic_top" Width="145" 
+                   MouseEnter="pic_top_MouseEnter"  MouseLeave="pic_top_MouseLeave">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/usb/picThumb.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/usb/picThumb-over.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Label Background="Transparent" Foreground="White" FontSize="9" FontWeight="Light" FontFamily="Arial"
+                       Content="I     M     A     G     E" Canvas.Left="210" Canvas.Top="20" Visibility="Hidden" Name="img_title"
+                       MouseEnter="img_title_MouseEnter" />
+                
+                <Image Canvas.Left="330" Canvas.Top="20" Height="50" Name="music_top" Width="145"  
+                   MouseEnter="music_top_MouseEnter" MouseLeave="music_top_MouseLeave" >
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/usb/musicThumb.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/usb/musicThumb-over.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+
+                <Label Background="Transparent" Foreground="White" FontSize="9" FontWeight="Light" FontFamily="Arial"
+                       Content="M     U     S     I     C" Canvas.Left="357" Canvas.Top="20" Visibility="Hidden" Name="music_title"
+                       MouseEnter="music_title_MouseEnter" />
+                
+                <Image Canvas.Left="475" Canvas.Top="20" Height="50" Name="movies_top" Width="145"
+                   MouseEnter="movies_top_MouseEnter" MouseLeave="movies_top_MouseLeave" >
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/usb/moviThumb.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/usb/moviThumb-over.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Label Background="Transparent" Foreground="White" FontSize="9" FontWeight="Light" FontFamily="Arial"
+                       Content="V     I     D     E     O" Canvas.Left="504" Canvas.Top="20" Visibility="Hidden" Name="movie_title" 
+                       MouseEnter="movie_title_MouseEnter" />
+                <Image Canvas.Left="620" Canvas.Top="20" Height="50" Name="misc_top" Width="145" 
+                   MouseEnter="misc_top_MouseEnter" MouseLeave="misc_top_MouseLeave" >
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/usb/miscThumb.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/usb/miscThumb-over.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                
+                <Label Background="Transparent" Foreground="White" FontSize="9" FontWeight="Light" FontFamily="Arial"
+                       Content="U  N  I  D  E  N  T  I  F  I  E  D" Canvas.Left="628" Canvas.Top="20" Visibility="Hidden" Name="misc_title" 
+                       MouseEnter="misc_title_MouseEnter"/>
+                
+                <Canvas Canvas.Left="45" Canvas.Top="80" Height="450"  Width="135" Name="doc_list"  MouseEnter="doc_list_MouseEnter"
+                    MouseLeftButtonDown="doc_list_MouseLeftButtonDown"  Background="Transparent" MouseLeave="doc_list_MouseLeave">
+                </Canvas>
+                <Canvas Canvas.Left="190" Canvas.Top="80" Height="450"  Width="135" Name="pic_list"  MouseEnter="pic_list_MouseEnter"
+                    MouseLeftButtonDown="pic_list_MouseLeftButtonDown"  Background="Transparent" MouseLeave="pic_list_MouseLeave"/>
+
+                <Canvas Canvas.Left="335" Canvas.Top="80" Height="450"  Width="135" Name="music_list"  MouseEnter="music_list_MouseEnter"
+                     MouseLeftButtonDown="music_list_MouseLeftButtonDown" Background="Transparent" MouseLeave="music_list_MouseLeave" />
+
+                <Canvas Canvas.Left="480" Canvas.Top="80" Height="450"  Width="135" Name="movie_list"  MouseEnter="movie_list_MouseEnter"
+                    MouseLeftButtonDown="movie_list_MouseLeftButtonDown"  Background="Transparent" MouseLeave="movie_list_MouseLeave">
+                </Canvas>
+                <!-- <Border x:Name="CanvasBorder" BorderBrush="Black" BorderThickness="2"  Canvas.Left="613" Canvas.Top="120"  Width="110" Height="450"> -->
+                <Canvas Canvas.Left="625" Canvas.Top="80" Height="450"  Width="135" Name="misc_list"  MouseEnter="misc_list_MouseEnter"
+                    MouseLeftButtonDown="misc_list_MouseLeftButtonDown" Background="Transparent" MouseLeave="misc_list_MouseLeave"></Canvas>
+                <!-- </Border> -->
+                <Canvas Width="29" Height="500" Background="Transparent" Canvas.Right="0" Canvas.Top="70"  Name="scroll_container"
+                    MouseLeftButtonDown="scroll_container_MouseLeftButtonDown" >
+                    <Canvas Width="29" Height="20"  Canvas.Left="0" Canvas.Top="10" Visibility="Hidden" Name="scroll_bar"
+                         MouseEnter="scroll_bar_MouseEnter" MouseLeave="scroll_bar_MouseLeave"
+                    MouseLeftButtonDown="scroll_bar_MouseLeftButtonDown" MouseLeftButtonUp="scroll_bar_MouseLeftButtonUp" >
+                        <!--<Image Canvas.Left="0" Canvas.Top="0"  Name="scroll_img" Width="18"   >
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Images/usb/scroll.png"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="Images/usb/scroll-over.png"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image> -->
+
+                    </Canvas>
+
+                </Canvas>
+                <!--
+            <Canvas Width="300" Height="100" Canvas.Top="574" Canvas.Left="528" MouseEnter="Canvas_MouseEnter_1" MouseLeave="Canvas_MouseLeave_3">
+                <Image Canvas.Right="27" Canvas.Bottom="36" Height="47" Name="usb_size" Width="237" 
+                       MouseEnter="bin_folder_MouseEnter" MouseLeave="bin_folder_MouseLeave"   >
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/usb/prog.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/usb/progUp.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Label Content="" FontSize="9" Width="20" Height="15" Padding="0 0 0 0" Canvas.Top="34"
+                       Foreground="#f04e25" Canvas.Left="241" Name="prog_lb"></Label>
+                <TextBox BorderBrush="#a0a0a0" BorderThickness="1" Width="170" Height="10" Background="Transparent" Canvas.Top="37" Canvas.Left="51"></TextBox>
+                <TextBox BorderBrush="Black" BorderThickness="0" Width="50" Height="10" Background="#f04e25" Name="pro_bar" Canvas.Top="37" Canvas.Left="51"></TextBox>
+            </Canvas>
+            -->
+                <Canvas Canvas.Left="307" Canvas.Bottom="0" Width="180" Height="40" MouseLeave="Canvas_MouseLeave_4">
+                    <Image Canvas.Right="0" Canvas.Bottom="0" Height="40" Width="180" Name="proBack"  >
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Images/usb/proCanvas.png" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="Images/usb/proCanvas_over.png" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+
+                    <TextBox BorderThickness="0" Background="White" Foreground="Black" Height="25" FontSize="10"  FontWeight="Bold" Canvas.Top="7" Padding="0 5 0 0"  
+                             Text="" Width="100" Canvas.Left="20" 
+                         Name="usb_per"  MouseEnter="usb_per_MouseEnter" IsReadOnly="True" Cursor="Arrow"></TextBox>
+                    <TextBox BorderThickness="0" Background="Transparent" Foreground="White" Height="30" FontSize="9" Canvas.Top="5" Text="8.0GB" FontWeight="ExtraBold" Width="30" Canvas.Left="125"
+                         Name="usb_totalSize" MouseEnter="usb_per_MouseEnter"  IsReadOnly="True" Cursor="Arrow" Padding="0 9 0 0"></TextBox>
+                </Canvas>
+                <Canvas Canvas.Left="487" Canvas.Bottom="0" Height="80" Name="bin_can" Width="200" MouseEnter="bin_folder_MouseEnter" MouseLeave="bin_folder_MouseLeave" Background="Transparent">
+                    <Image Canvas.Left="1" Canvas.Bottom="0" Height="40" Name="bin_folder" Width="40" MouseEnter="bin_folder_MouseEnter" MouseLeave="bin_folder_MouseLeave">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Images/usb/bin.png" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="Images/usb/binDown.png" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Canvas>
+
+            </Canvas>
+        </Border>
+        <Canvas Background="White" Opacity="0.1" HorizontalAlignment="Left" VerticalAlignment="Top" Name="top_can"></Canvas>
+        <Canvas Background="White" Opacity="0.1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Name="bottom_can"></Canvas>
+        <Canvas Background="White" Opacity="0.1" HorizontalAlignment="Left" VerticalAlignment="Top" Name="left_can"></Canvas>
+        <Canvas Background="White" Opacity="0.1" HorizontalAlignment="Right" VerticalAlignment="Top" Name="right_can"></Canvas>
+    </Grid>
+</Window>

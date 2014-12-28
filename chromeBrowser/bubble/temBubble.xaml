@@ -1,0 +1,26 @@
+﻿<Window x:Class="chromeBrowser.bubble.temBubble"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Background="Transparent" MouseLeave="Window_MouseLeave"  
+        BorderThickness="0"  AllowsTransparency="True" WindowStyle="None"
+        Title="temBubble" Height="208" Width="402">
+    <Grid  Background="Transparent" >
+        <Canvas Margin="0 0 0 0" Height="208" Width="402">
+
+            <Canvas.Background>
+                <ImageBrush ImageSource="../Images/bubble/temp_bg.png">
+                </ImageBrush>
+            </Canvas.Background>
+
+            <Image Source="../Images/bubble/player.png" Width="82" Height="74" Canvas.Left="15" Canvas.Top="65"/>
+            <CheckBox Content="Do not show me Again" Canvas.Left="20" Canvas.Top="165" FontSize="13" Name="isCamCls"/>
+
+
+            <Image  Height="39" Name="bubble_close" Width="178" Canvas.Right="25" Canvas.Bottom="14" MouseDown="bubble_close_MouseDown"
+                    Source="../Images/bubble/tutorial_cls.png" />
+
+
+        </Canvas>
+        
+    </Grid>
+</Window>

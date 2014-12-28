@@ -1,0 +1,29 @@
+﻿<Window x:Class="chromeBrowser.registerKey"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="registerKey" BorderThickness="0"  AllowsTransparency="True"
+        WindowStyle="None"   Background="Transparent"  Icon="Images/cloud_norm-over.ico" BorderBrush="Black"  
+        Height="240" Width="484">
+    <Grid>
+        <Canvas Margin="0 0 0 0 " >
+            <Canvas.Background>
+                <ImageBrush ImageSource="Images/register_key/reg_key_bg.png">
+                </ImageBrush>
+            </Canvas.Background>
+            <Image  Width="26" Height="27" Canvas.Right="13" Canvas.Top="7"  Source="Images/login/close.png" 
+                   MouseLeftButtonDown="closeWin"  Cursor="Hand">
+            </Image>
+
+            <TextBox     Background="Transparent" Width="320" Height="25" Canvas.Left="70" 
+                         Canvas.Top="110"  Foreground="#949494" Padding="25 0 0 0"  
+                         Text="ENTER WDRIVE REGISTRATION KEY HERE" FontSize="15"       Name="keyName" 
+                         MouseDown="userName_MouseDown"  MouseEnter="userName_MouseEnter" 
+                         MouseLeave="userName_MouseLeave" KeyDown="keyName_KeyDown"
+                         BorderThickness="0" ></TextBox>
+            
+            <Image  Width="130" Height="39" Canvas.Left="177" Canvas.Top="155"  Source="Images/register_key/save.png" 
+                   Cursor="Hand" Name="usersubmit"  >
+            </Image>
+        </Canvas>
+    </Grid>
+</Window>

@@ -1,0 +1,284 @@
+﻿<Window x:Class="chromeBrowser.login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  BorderThickness="0"  
+        MouseLeave="Window_MouseLeave"
+        MouseUp="Window_MouseUp"  MouseMove="Window_MouseMove"
+        xmlns:local="clr-namespace:chromeBrowser"
+        AllowsTransparency="True" WindowStyle="None" BorderBrush="Black" Topmost="False"
+        Title="login" Height="440" Width="484"  Background="Transparent"  Icon="Images/cloud_norm-over.ico" >
+
+    <Window.Resources>
+
+        <Style x:Key="SinhalaFont">
+            <Setter Property="TextElement.FontFamily" Value="font/#DINPRO-LIGHT"/>
+        </Style>
+
+        <Style x:Key="ActionLabelStyle" TargetType="{x:Type Label}">
+            <Setter Property="Margin" Value="0,0" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="True" />
+                        <Condition Property="IsEnabled" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Background" Value="Transparent" />
+                </MultiTrigger>
+            </Style.Triggers>
+            <Style.Resources>
+                <Style TargetType="TextBlock">
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Label}, Path=IsMouseOver}" Value="True" />
+                                <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="TextDecorations" Value="Underline"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="outerBorder" CornerRadius="4" BorderThickness="1" BorderBrush="#FFF04E25" Background="#FFF04E25" >
+                           
+                            <Grid>
+                                <Border x:Name="Background" CornerRadius="3" BorderThickness="1" BorderBrush="Transparent">
+                                    <Grid>
+                                        <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="TextBoxBaseControlTemplate" TargetType="{x:Type TextBoxBase}">
+            <Border Background="{TemplateBinding Background}" 
+                x:Name="Bd" BorderBrush="Black"
+                BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="4">
+                <ScrollViewer x:Name="PART_ContentHost"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TargetName="Bd"/>
+                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="Width" Value="Auto">
+                    <Setter Property="MinWidth" Value="100"/>
+                </Trigger>
+                <Trigger Property="Height" Value="Auto">
+                    <Setter Property="MinHeight" Value="20"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
+
+    <Grid >
+        <Canvas Name="can_wrapper" Background="Transparent" Margin="0,0,0,0" >
+
+            <Canvas Background="Transparent"  Height="440" Width="484" Name="middle_can">
+               
+
+                <Canvas Height="125" Margin="0, 270 , 0 ,0"  VerticalAlignment="Top" Name="contact_bottom"
+                Width="484">
+                    <Canvas.Background>
+                        <ImageBrush ImageSource="Images/login/contact.png">
+                        </ImageBrush>
+                    </Canvas.Background>
+                    <!--
+            <Label  Background="Transparent" FontSize="15" Name="contact_pro" Foreground="#f04e25" Canvas.Top="4" Canvas.Left="165" FontWeight="DemiBold" >PROPERTY OF</Label> -->
+                    <!-- <Label  Background="Transparent" FontSize="11" Foreground="#b1b2b4" Canvas.Top="72" Canvas.Left="38" >www.wemargin.com</Label> -->
+                    <Label Content="" Name="first_name" Canvas.Top="35" Canvas.Left="43" Foreground="Gray" FontSize="15" />
+                    <Label Content="" Name="last_name" Canvas.Top="55" Canvas.Left="43" Foreground="Gray" FontSize="13"/>
+                    <Label Content="" Name="email" Canvas.Top="75" Canvas.Left="43" Foreground="Gray" FontSize="13"/>
+                    <Label Content="" Name="phone" Canvas.Top="95" Canvas.Left="43" Foreground="Gray" FontSize="13"/>
+                </Canvas>
+                
+                <Canvas Height="43" Margin="0, 395, 0 ,0"  VerticalAlignment="Top" Name="contact_end" Width="484">
+                    <Image  Canvas.Right="40"      Canvas.Top="0" Cursor="Hand" Width="78" Height="43" 
+                         Name="contactEnd"  >
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Images/login/wemagin_tech.png"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="Images/login/wemagin_tech.png"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Canvas>
+                
+                <Canvas MouseDown="Canvas_MouseDown" Width="484" 
+                        Height="271" Margin="0,0,0,0" VerticalAlignment="Top" >
+                    <Canvas.Background>
+                        <ImageBrush ImageSource="Images/login/log_bg.png">
+
+                        </ImageBrush>
+                    </Canvas.Background>
+
+                    <Image Canvas.Left="0" Canvas.Top="0" Height="40" Name="logo_icon" Width="41" >
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="Images/login/logo.png"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="Images/login/logo.png"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+           
+            <Image  Width="26" Height="27" Canvas.Right="13" Canvas.Top="7"  Source="Images/login/close.png" 
+                   MouseLeftButtonDown="Image_MouseLeftButtonDown_1"  >                
+            </Image>
+
+
+
+
+                    <!--
+        </Canvas>
+               
+           <Canvas Height="234" Margin="0, 40 , 0 ,0"  VerticalAlignment="Top" Width="484">
+
+            <Canvas.Background>
+                <ImageBrush ImageSource="Images/login/login_bottom.png">
+
+                </ImageBrush>
+            </Canvas.Background> -->
+
+                    <TextBox  Name="userName" Width="250" Height="26" Canvas.Top="77" Canvas.Left="100" 
+                              BorderThickness="0"  Padding="5 7 0 0" FontSize="15" Text="User Email" PreviewKeyDown="userName_PreviewKeyDown"  
+                      Background="Transparent"  Foreground="#949494" MouseEnter="userName_MouseEnter" MouseDown="userName_MouseDown"
+                              MouseLeave="userName_MouseLeave"  KeyDown="userName_KeyDown"  SelectionChanged="userName_SelectionChanged"                                
+                      KeyUp="userName_KeyUp"  TextChanged="userName_TextChanged"  ></TextBox>
+
+                    <PasswordBox   Name="userPass" Width="250" Height="26" Canvas.Top="135" Canvas.Left="100" BorderThickness="0"  Visibility="Hidden"
+                      Padding="5" FontSize="15"   KeyDown="userPass_KeyDown" Password="Password" 
+                      Background="Transparent"  Foreground="#949494"  MouseEnter="userPass_MouseEnter"  MouseLeave="userPass_MouseLeave"                      
+                       ></PasswordBox >
+
+                    <TextBox   Name="userPassOver" Width="250" Height="26" Canvas.Top="135" Canvas.Left="100" BorderThickness="0"  
+                      Padding="5" FontSize="15"   KeyDown="userPassOver_KeyDown" Text="Password" IsReadOnly="True" 
+                      Background="Transparent"  Foreground="#949494"  MouseEnter="userPass_MouseEnter"  MouseLeave="userPass_MouseLeave"                      
+                      ></TextBox >
+
+                    <Image  Name="emailKey" Canvas.Top="85" Canvas.Left="415" Width="16" Height="16" Source="Images/Keyboard.png"
+                            MouseLeftButtonDown="emailKey_MouseLeftButtonDown" />
+                    <Image  Name="passKey" Canvas.Top="138" Canvas.Left="415" Width="16" Height="16" Source="Images/Keyboard.png"
+                            MouseLeftButtonDown="passKey_MouseLeftButtonDown" />
+                    <!--
+            <TextBox  Text="Login to WEMAGIN"  Background=" #f04e25" Width="121" Height="28" Canvas.Left="91" Canvas.Top="130" BorderThickness="1" 
+                      MouseEnter="Button_MouseEnter" MouseLeave="loginBtn_MouseLeave" Name="loginBtn"  BorderBrush="#f04e25"  ></TextBox>-->
+                   
+                   <!-- <TextBox   Text="Login to W"   Background="#f04e25" Width="152" Height="25" Canvas.Left="123"  
+                               FontSize="12"   IsEnabled="False"    Canvas.Top="143" BorderThickness="0" 
+                               Foreground="#ffffff" Padding="42 4 0 0" IsReadOnly="True" MouseDown="loginBtn_MouseDown" 
+                               MouseEnter="Button_MouseEnter" MouseLeave="loginBtn_MouseLeave" Name="loginBtn"  
+                               BorderBrush="#f04e25" Cursor="Hand"></TextBox> -->
+
+                 
+                    <Image  Canvas.Left="45" IsEnabled="False"     Canvas.Top="183" Cursor="Hand" Width="252" 
+                            Height="39" Name="loginBtn"  >
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="Images/login/login_btn.png"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="Images/login/login_over_btn.png"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                        <!--  MouseDown="loginBtn_MouseDown"-->
+
+
+            <!--<TextBox  Text="Register"  Background="Black" Width="95" Height="25" Canvas.Left="279" IsEnabled="False"  
+                      BorderThickness="0" Foreground="#ffffff" Padding="27 4 0 0"  MouseEnter="regBtn_MouseEnter" MouseLeave="regBtn_MouseLeave" 
+                     IsReadOnly="True"      Name="regBtn"  BorderBrush="#f04e25" Cursor="Hand"  Canvas.Top="143"></TextBox>-->
+
+              <Image  Canvas.Left="306" IsEnabled="False"     Canvas.Top="183" Cursor="Hand" Width="130" Height="39" 
+                      Name="regBtn"  >
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Source" Value="Images/login/reg_btn.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                       <Setter Property="Source" Value="Images/login/reg_btn.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                
+                      <!--  <TextBox  Text="Reset Password"  Background="Black" Width="95" Height="25" Canvas.Left="279"  IsEnabled="False"
+                      BorderThickness="0" Foreground="#ffffff" Padding="4 4 0 0"  Visibility="Hidden" 
+                     IsReadOnly="True"  Name="resetBtn"  BorderBrush="#f04e25" Cursor="Hand"  Canvas.Top="143"></TextBox> -->
+                    <!--  <Button  Canvas.Left="91" Canvas.Top="97" Style="{StaticResource MyButtonStyle}" Width="121" Height="28">Login to WEMAGIN </Button> -->
+                 <Image  Canvas.Left="306" IsEnabled="False"     Canvas.Top="183" Cursor="Hand" Width="130" Height="39" 
+                  Name="resetBtn"  >
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="Images/login/resetPass_btn.png"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="Images/login/resetPass_btn.png"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+
+                     <Image  Canvas.Left="45" IsEnabled="False"     Canvas.Bottom="12" Cursor="Hand" Width="92" Height="14" 
+                         Name="contactLink" MouseDown="contactLink_MouseDown"  >
+                            <Image.Style>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Source" Value="Images/login/contact_info.png"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Source" Value="Images/login/contact_info.png"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                
+                        
+                
+                <TextBox   Name="forgotPass" Width="130" Height="25" Canvas.Bottom="10" Canvas.Right="50" BorderThickness="0"  
+                Padding="5 1 0 0" FontSize="15"   Text="Forgot Password?" IsReadOnly="True" TextDecorations="Underline"
+                Background="Transparent"  Foreground="#949494" Cursor="Hand"  Visibility="Hidden"
+                MouseEnter="forgotPass_MouseEnter" MouseLeave="forgotPass_MouseLeave"></TextBox >
+               <local:AnimatedGIFControl x:Name="GIFCtrl"  Canvas.Top="90" Canvas.Left="210" />
+
+            </Canvas>
+            
+
+
+
+
+      
+        
+               
+                
+        </Canvas>
+        <Canvas Name="up_can" Background="White" Opacity="0.01" Width="484" Canvas.Top="0" Height="200"></Canvas>
+           
+        </Canvas>
+    </Grid>
+</Window>

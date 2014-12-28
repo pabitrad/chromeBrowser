@@ -1,0 +1,13 @@
+﻿<Window x:Class="chromeBrowser.loadingInternet"
+        xmlns:local="clr-namespace:chromeBrowser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  BorderThickness="0"  
+        AllowsTransparency="True" WindowStyle="None"  Topmost="True"  
+        Title="loading" Height="2" Width="2"  Background="Transparent"  Icon="Images/cloud_norm-over.ico">
+    <Grid>
+        <Canvas Margin="0 0 0 0">
+            
+        </Canvas>
+
+    </Grid>
+</Window>

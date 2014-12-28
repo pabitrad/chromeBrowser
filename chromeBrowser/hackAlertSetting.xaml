@@ -1,0 +1,38 @@
+﻿<Window x:Class="chromeBrowser.hackAlertSetting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="hackAlertSetting" Height="203" Width="483" 
+        AllowsTransparency="True" WindowStyle="None" BorderBrush="Black" Topmost="True"
+        Background="Transparent"  Icon="Images/cloud_norm-over.ico" >
+    <Grid>
+        <Canvas Margin="0 0 0 0" Height="203" Width="483" MouseLeftButtonDown="Canvas_MouseLeftButtonDown" >
+        <Canvas.Background>
+            <ImageBrush ImageSource="Images/setting/hack_bg.png">
+            </ImageBrush>
+        </Canvas.Background>
+            <Image  Width="26" Height="27" Canvas.Right="13" Canvas.Top="7"  
+                        Source="Images/login/close.png" 
+                   MouseLeftButtonDown="minClose_MouseLeftButtonDown"  Cursor="Hand" Name="minClose">
+            </Image>
+            <Image  Width="20" Height="20" Canvas.Left="296" Canvas.Top="88"  
+                        Source="Images/setting/turner.png" 
+                     Cursor="Hand" Name="hackOFF" Visibility="Hidden">
+            </Image>
+            <Image  Width="20" Height="20" Canvas.Left="332" Canvas.Top="88"  
+                        Source="Images/setting/turner.png" 
+                     Cursor="Hand" Name="hackON">
+            </Image>
+
+            <Image  Width="130" Height="39" Canvas.Left="182" Canvas.Top="142"  
+                        Source="Images/contact_info/save.png" MouseLeftButtonDown="saveBTN_MouseLeftButtonDown"
+                     Cursor="Hand" Name="saveBTN">
+            </Image>
+
+            <Label Background="Transparent" BorderThickness="0" Foreground="White" Name="lbOn"
+                   FontWeight="Bold" Content="ON" FontSize="12" Canvas.Left="298" Canvas.Top="85"/>
+            <Label Background="Transparent" BorderThickness="0" Foreground="White" Name="lbOFF" Visibility="Hidden"
+                   FontWeight="Bold" Content="OFF" FontSize="12" Canvas.Left="317" Canvas.Top="85"/>
+        </Canvas>
+        
+    </Grid>
+</Window>

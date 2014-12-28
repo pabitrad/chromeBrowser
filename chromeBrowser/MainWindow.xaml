@@ -1,0 +1,289 @@
+﻿<Window x:Class="chromeBrowser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:local="clr-namespace:chromeBrowser"  Background="Transparent" Topmost="False"      
+        BorderThickness="0"  AllowsTransparency="True" WindowStyle="None"    KeyDown="Window_KeyDown"     
+        Title="MainWindow" Height="95" Width="900"  Icon="Images/cloud_norm-over.ico" MouseMove="Window_MouseMove">
+
+    <!--<Window.Resources>
+        <ContextMenu x:Key="NotifierContextMenu"
+                    Placement="MousePoint">
+            <MenuItem Header="Open" Click="Menu_Open"/>
+            <MenuItem Header="Close" Click="Menu_Close"/>
+        </ContextMenu>
+    </Window.Resources> -->
+    
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard >
+                    <DoubleAnimation Duration="0:0:.8" Storyboard.TargetProperty="Top" From="-30" To="0" AccelerationRatio=".1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid Margin="0 0 0 0" Background="Transparent" MouseEnter="Grid_MouseEnter" MouseMove="Grid_MouseMove">       
+        
+        
+        <Canvas Margin="0 55 0 0" Height="40" Background="Transparent">
+            
+            <Canvas Canvas.Left="250" Canvas.Top="0"   Height="8" Name="addressBack" Background="White"  
+                    Width="400" Visibility="Hidden" >
+            </Canvas>
+            <Canvas Canvas.Left="80" Width="10" Height="10" Visibility="Visible" Canvas.Bottom="5" Name="camWrapper"/>            
+        </Canvas>
+
+
+        <Canvas Name="wrapper"  Margin="0 0 0 40"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="55" >
+            <Canvas.Background>
+                <ImageBrush  ImageSource="Images/toolbar/bg_part.png"  TileMode="FlipXY"  Viewport="0,0,12,55"
+                ViewportUnits="Absolute"/>
+            </Canvas.Background>
+
+
+            <Image Canvas.Right="8"  Canvas.Top="14" Height="27" Width="34"   Cursor="Hand"
+                   MouseLeftButtonDown="closeBTN_MouseLeftButtonDown" MouseEnter="Image_MouseEnter">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/toolbar/close.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/toolbar/close-over.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            <Image Canvas.Right="49"  Canvas.Top="14" Height="27" Width="33"   Cursor="Hand"
+                   MouseLeftButtonDown="Mini_MouseLeftButtonDown" MouseEnter="Image_MouseEnter_1"  >
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/toolbar/min.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/toolbar/min-over.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            <Image Canvas.Right="138"  Canvas.Top="13" Height="28" Width="59"  Name="camblock"
+                  Visibility="Hidden" >
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/toolbar/cam_block.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/toolbar/cam_block.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+
+            <Image Canvas.Right="138"  Canvas.Top="13" Height="28" Width="59"  Name="vpnblock"
+                  Visibility="Hidden" >
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/toolbar/vpn_block.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/toolbar/vpn_block.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            
+            <Image Canvas.Left="0" Canvas.Top="0" Height="55" Name="usbImg" Width="67" MouseLeave="usbImg_MouseLeave" 
+                   MouseEnter="usbButton_MouseEnter" MouseLeftButtonDown="usbImg_MouseLeftButtonDown"   >
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/toolbar/usb.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/toolbar/usb-over.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            <Image Canvas.Left="76" Canvas.Top="11" Height="38" Name="visibleTxt" Width="96"  
+                   Source="Images/toolbar/visible_text.png" MouseEnter="visibleTxt_MouseEnter" >               
+               
+            </Image>           
+
+           
+            <Image Canvas.Right ="95" Canvas.Top="14" Height="27" Name="setting_button" Width="43"  
+                   MouseLeftButtonDown="setting_button_MouseLeftButtonDown" 
+                    Cursor="Hand" MouseEnter="setting_button_MouseEnter" >
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/toolbar/setting.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/toolbar/setting-over.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            <Image Canvas.Right ="148" Canvas.Top="14" Height="27" Name="lineImage" Width="2" Visibility="Hidden" >
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/toolbar/line.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/toolbar/line.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+
+
+            <Canvas Canvas.Left="250" Canvas.Top="14"   Height="27" Name="addressTextContainer" Background="#232324"  
+                    Width="500" >             
+                
+
+                <TextBox Canvas.Top="0" Height="27" Name="addText" Canvas.Left="33"  BorderThickness="0" Padding="0 5 0 0" 
+                         Background="#232324" FontSize="15"  BorderBrush="#232324" Width="110"  MouseMove="addText_MouseMove" 
+                         MouseLeave="addText_MouseLeave" KeyDown="addText_KeyDown"  Text="http://www.google.com" Focusable="True"
+                         MouseEnter="addText_MouseEnter" Foreground="#818181"  Cursor="Hand"  />
+                <Image Canvas.Left="7" Canvas.Top="7" Height="14" Name="search_icon" Stretch="Fill" Width="14"
+                       MouseEnter="search_icon_MouseEnter" MouseLeave="search_icon_MouseLeave"
+                        MouseLeftButtonDown="search_icon_MouseLeftButtonDown"  Cursor="Hand"    >
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/toolbar/google_s.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/toolbar/google_s.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Image Canvas.Left="27" Canvas.Top="0" Height="27" Name="google_line" Stretch="Fill" Width="2"
+                       Source="Images/toolbar/line_s.png">
+                   
+                </Image>
+
+
+                <Line   Canvas.Left="0" Canvas.Top="0" X1="40" Y1="0"   X2="40" Y2="60"   Stroke="Black"  
+                        StrokeThickness="0.1"  Visibility="Hidden"
+                        Name="google_div_line" />
+                
+                <Line   Canvas.Left="0" Canvas.Top="0" X1="0" Y1="60"   X2="100" Y2="60"   Stroke="Black"  
+                        StrokeThickness="0.1"  Visibility="Hidden"
+                        Name="google_bottom_line" />
+
+                <Line   X1="-1" Y1="0"   X2="0" Y2="60"   Stroke="Gray"   
+                        StrokeThickness="0.1"  Visibility="Hidden"
+                        Name="google_left_line" />
+                <Line   Canvas.Right="0" X1="0" Y1="0"   X2="0" Y2="60"   Stroke="Gray"  
+                        StrokeThickness="0.1"  Visibility="Hidden"
+                        Name="google_right_line" />
+                <Line   Canvas.Left="0" Canvas.Top="0" X1="0" Y1="0"   X2="100" Y2="0"   Stroke="Black"   
+                        StrokeThickness="0.1"  Visibility="Hidden"
+                        Name="google_top_line" />
+            </Canvas>
+
+            <Canvas Height="27" Name="search_canvas" Width="300" Background="#232324"  Canvas.Right="300" 
+                    Canvas.Top="14"  MouseLeave="SearChBox_MouseLeave" >    
+
+                <TextBox Canvas.Left="40" Canvas.Top="0" Height="27" Name="search_text" Width="230"   FontSize="15"  
+                         VerticalAlignment="Center" MouseLeftButtonDown="search_text_MouseLeftButtonDown"
+                          MouseEnter="search_text_MouseMove" MouseLeave="search_text_MouseLeave"
+                          BorderThickness="0"  Padding="1 2 0 0" Foreground="#818181"
+                          KeyDown="search_text_KeyDown" Text="Clickless Search" Background="#232324" Cursor="Hand" />
+                <Image Canvas.Left="6" Canvas.Top="6" Height="14" Name="button1" Width="14" HorizontalAlignment="Right"  
+                       MouseLeave="search_text_MouseLeave" Cursor="Hand">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/toolbar/search_s.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/toolbar/search_s.png"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+
+                <Image Canvas.Left="27" Canvas.Top="0" Height="27" Name="search_line" Stretch="Fill" Width="2"
+                       Source="Images/toolbar/line_s.png">
+
+                </Image>
+
+                <Image Canvas.Right="15" Canvas.Top="9" Height="9" Name="fnd" Stretch="Fill" Width="25"
+                       Source="Images/toolbar/fnd_b.png">
+
+                </Image>
+
+
+                <Line   Canvas.Left="0" Canvas.Top="0" X1="40" Y1="0"   X2="40" Y2="60"   Stroke="Black"  
+                        StrokeThickness="0.1"  Visibility="Hidden"
+                        Name="search_div_line" />
+                
+                <Line   Canvas.Left="0" Canvas.Top="0" X1="0" Y1="60"   X2="100" Y2="60"   Stroke="Black"  
+                        StrokeThickness="0.1"  Visibility="Hidden"
+                        Name="search_bottom_line" />
+
+                <Line   X1="-1" Y1="0"   X2="0" Y2="60"   Stroke="Gray"   
+                        StrokeThickness="0.1"  Visibility="Hidden"
+                        Name="search_left_line" />
+                <Line   Canvas.Right="0" X1="0" Y1="0"   X2="0" Y2="60"   Stroke="Gray"  
+                        StrokeThickness="0.1"  Visibility="Hidden"
+                        Name="search_right_line" />
+                <Line   Canvas.Left="0" Canvas.Top="0" X1="0" Y1="0"   X2="100" Y2="0"   Stroke="Black"   
+                        StrokeThickness="0.1"  Visibility="Hidden"
+                        Name="search_top_line" />
+                
+            </Canvas>
+        </Canvas>
+        
+
+         <Canvas Margin="0 55 0 15" Height="25" Width="100" Name="centerLogo" HorizontalAlignment="Right"
+                 Background="Transparent" >
+
+            <!--<Canvas.Background>
+                <ImageBrush  ImageSource="Images/toolbar/bg_part.png"  TileMode="FlipXY"  Viewport="0,0,12,55"
+                ViewportUnits="Absolute"/>
+            </Canvas.Background> -->
+             
+            <Image  Width="27" Height="27" Name="center_logo" VerticalAlignment="Top"   MouseEnter="center_logo_MouseEnter"                    
+                    MouseLeave="center_logo_MouseLeave_1"
+                     Canvas.Right="108"  Canvas.Top="-41" Visibility="Hidden">
+                <!--   MouseLeftButtonUp="center_logo_MouseLeftButtonUp"  MouseLeftButtonDown="center_logo_MouseLeftButtonDown"-->
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/toolbar/logo.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/toolbar/logo-over.png"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            <Canvas Width="41" Height="55"  Canvas.Right="100" Name="buttonOver" Visibility="Hidden"  
+                     Cursor="Hand" Canvas.Top="-55">
+                <Canvas.Background>
+                    <ImageBrush ImageSource="Images/toolbar/logo_over.png">
+
+                    </ImageBrush>
+                </Canvas.Background>
+            </Canvas>
+        </Canvas> 
+    </Grid>
+</Window>

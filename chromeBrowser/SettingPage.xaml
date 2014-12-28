@@ -1,0 +1,99 @@
+﻿<Window x:Class="chromeBrowser.SettingPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         BorderThickness="0"  AllowsTransparency="True" WindowStyle="None"
+         Background="Transparent"  BorderBrush="Black"
+        Title="SettingPage" Height="395" Width=" 484 " Loaded="Window_Loaded">
+    <Grid Background="White">
+        <Canvas Margin="0 0 0 0" Height="395" Width="484 ">
+           
+                <Canvas.Background>
+                    <ImageBrush ImageSource="Images/contact_info/contact_bg.png">
+                    </ImageBrush>
+                </Canvas.Background>
+
+            <Image  Width="26" Height="27" Canvas.Right="13" Canvas.Top="7"  
+                        Source="Images/login/close.png" 
+                   MouseLeftButtonDown="close_icon_MouseLeftButtonDown"  Cursor="Hand" Name="minClose">
+            </Image>
+
+
+
+            <Image  Width="292" Height="39" Canvas.Left="149" Canvas.Top="135"  
+                        Source="Images/contact_info/text_normal.png" 
+                     Cursor="Hand" Name="name_back">
+            </Image>
+
+            <Image  Width="292" Height="39" Canvas.Left="149" Canvas.Top="135"  
+                        Source="Images/contact_info/text_over.png" 
+                     Cursor="Hand" Name="name_back_over" Visibility="Hidden">
+            </Image>
+
+
+            <TextBox  Width="292" Height="39" Canvas.Left="149" Canvas.Top="135"  Foreground="#a2a2a2"
+                      Padding="5 10" MouseEnter="TextBox_MouseEnter"  MouseLeave="TextBox_MouseLeave" Cursor="Hand"
+                      Name="fName" FontSize="15" Background="Transparent" BorderThickness="0"    KeyDown="fName_KeyDown" ></TextBox>
+
+
+            <Image  Width="292" Height="39" Canvas.Left="149" Canvas.Top="183"  
+                        Source="Images/contact_info/text_normal.png" 
+                     Cursor="Hand" Name="lName_back">
+            </Image>
+
+            <Image  Width="292" Height="39" Canvas.Left="149" Canvas.Top="183"  
+                        Source="Images/contact_info/text_over.png" 
+                     Cursor="Hand" Name="lName_back_over" Visibility="Hidden">
+            </Image>
+            
+            <TextBox Text="" Width="292" Height="39" Canvas.Left="149" Canvas.Top="183" Background="Transparent" 
+                     Foreground="#a2a2a2" Padding="5 10" Name="lName" FontSize="15" Cursor="Hand" BorderThickness="0"
+                     MouseEnter="lName_MouseEnter" MouseLeave="lName_MouseLeave" KeyDown="lName_KeyDown" ></TextBox>
+
+            <Image  Width="292" Height="39" Canvas.Left="149" Canvas.Top="232"  
+                        Source="Images/contact_info/text_normal.png" 
+                     Cursor="Hand" Name="eMail_back">
+            </Image>
+
+            <Image  Width="292" Height="39" Canvas.Left="149" Canvas.Top="232"  
+                        Source="Images/contact_info/text_over.png" 
+                     Cursor="Hand" Name="eMail_back_over" Visibility="Hidden">
+            </Image>
+            
+            <TextBox Text="" Width="292" Height="39" Canvas.Left="149" Canvas.Top="232" Background="Transparent" 
+                     Foreground="#a2a2a2"  Padding="5 10" Name="eMail" FontSize="15" Cursor="Hand" BorderThickness="0"
+                     MouseEnter="eMail_MouseEnter"  MouseLeave="eMail_MouseLeave" KeyDown="eMail_KeyDown" ></TextBox>
+
+            <Image  Width="292" Height="39" Canvas.Left="149" Canvas.Top="280"  
+                        Source="Images/contact_info/text_normal.png" 
+                     Cursor="Hand" Name="phone_back">
+            </Image>
+
+            <Image  Width="292" Height="39" Canvas.Left="149" Canvas.Top="280"  
+                        Source="Images/contact_info/text_over.png" 
+                     Cursor="Hand" Name="phone_back_over" Visibility="Hidden">
+            </Image>
+            
+            <TextBox Text="" Width="292" Height="39" Canvas.Left="149" Canvas.Top="280" Background="Transparent" 
+                     Foreground="#a2a2a2"  Padding="5 10" Name="phone" FontSize="15" Cursor="Hand" BorderThickness="0"
+                     MouseEnter="phone_MouseEnter"  MouseLeave="phone_MouseLeave" ></TextBox>
+
+
+            <Image Canvas.Left="172" Canvas.Top="335" Height="39" Name="save_button"  
+                   Cursor="Hand" Width="130" >
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="Images/contact_info/save.png" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="Images/contact_info/save.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image> 
+       
+        </Canvas>
+
+    </Grid>
+</Window>
+

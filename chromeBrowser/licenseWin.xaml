@@ -1,0 +1,31 @@
+﻿<Window x:Class="chromeBrowser.licenseWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        BorderThickness="0"  AllowsTransparency="True" WindowStyle="None"
+        Background="Transparent" Topmost="True" Icon="Images/cloud_norm-over.ico"
+        Title="licenseWin" Height="453" Width="563">
+    <Grid>
+        <Canvas Margin="0,0,0,0" Width="563" Height="453">
+            <Canvas.Background>
+                <ImageBrush ImageSource="Images/register_key/agree_bg.png">
+                </ImageBrush>
+            </Canvas.Background>
+
+            <Image  Width="26" Height="27" Canvas.Right="13" Canvas.Top="7"  
+                        Source="Images/login/close.png" 
+                   MouseLeftButtonDown="minClose_MouseLeftButtonDown"  Cursor="Hand" Name="minClose">
+            </Image>
+            
+            <TextBox BorderThickness="1"  Padding="5 20" FontSize="15" TextWrapping="Wrap" Canvas.Left="70" Canvas.Top="70" Width="450" Height="300" Text="  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/>
+
+            <CheckBox Width="20" Height="20" Canvas.Left="52" Canvas.Top="405" Name="isAgree" />
+            <Image Source="Images/register_key/agree.png" Canvas.Left="85" 
+                   Canvas.Top="397" Width="124" Height="28" MouseDown="Image_MouseDown"/>
+            <Image Source="Images/register_key/noBtn.png" Canvas.Left="284" Cursor="Hand"
+                   Canvas.Top="396" Width="113" Height="39" Name="noBtn"/>
+            <Image Source="Images/register_key/yesBtn.png" Canvas.Left="410"  Name="yesBtn" Cursor="Hand"
+                   Canvas.Top="396" Width="113" Height="39" />
+           </Canvas>
+    </Grid>
+</Window>
